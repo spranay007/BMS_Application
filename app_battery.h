@@ -17,14 +17,22 @@ class battery{
         float meas_current;
         BatteryType batteryType;
     public:
-        battery(int numcells, int numTempSensors, BatteryType type)
-        : meas_cellVoltages(numcells, 0.0),
-        meas_cellTems(numTempSensors, 0.0),
-        meas_current(0.0);
-        batteryType(type){}
+        battery(int numcells, int numTempSensors, BatteryType type); 
         
-        void setBatteryType(BatteryType type){batteryType = type;};
-        BatteryType getBatteryType()const{return batteryType;};
+        //setter functions
+        void setCellVoltages(const vector<float>& cellVolatges);
+        void setCellTemps(const vector<float>& cellTemps);
+        void setCurrent(float current);
+        void setBatteryType(BatteryType type);
+        //getter functions
+        vector<float> getCellVoltages(void) const;
+        vector<float> getCellTemps(void) const;
+        float getCurrent(void) const;
+        BatteryType getBatteryType(void) const;
+
+        //utility functions
+        size_t getCellCount(void) const;
+        size_t getCellTempCount(void) const;
 }
 
 #endif

@@ -1,6 +1,7 @@
-#ifdef APP_BATTERY.H
+#ifndef APP_BATTERY.H
 #define APP_BATTERY.H
 
+#include <vector>
 using namespace std;
 
 enum class BatteryType{
@@ -18,12 +19,13 @@ class battery{
         BatteryType batteryType;
     public:
         battery(int numcells, int numTempSensors, BatteryType type); 
-        
+
         //setter functions
         void setCellVoltages(const vector<float>& cellVolatges);
         void setCellTemps(const vector<float>& cellTemps);
         void setCurrent(float current);
         void setBatteryType(BatteryType type);
+        
         //getter functions
         vector<float> getCellVoltages(void) const;
         vector<float> getCellTemps(void) const;
@@ -33,6 +35,6 @@ class battery{
         //utility functions
         size_t getCellCount(void) const;
         size_t getCellTempCount(void) const;
-}
+};
 
 #endif

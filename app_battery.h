@@ -25,7 +25,7 @@ class battery{
         void setCellTemps(const vector<float>& cellTemps);
         void setCurrent(float current);
         void setBatteryType(BatteryType type);
-        
+
         //getter functions
         vector<float> getCellVoltages(void) const;
         vector<float> getCellTemps(void) const;
@@ -35,6 +35,7 @@ class battery{
         //utility functions
         size_t getCellCount(void) const;
         size_t getCellTempCount(void) const;
+        bool checkBatteryTypeValidity(BatteryType type);
 };
 
 #endif

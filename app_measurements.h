@@ -1,5 +1,5 @@
-#ifndef APP_MEASUREMNTS.H
-#define APP_MEASURMENTS.H
+#ifndef APP_MEASUREMENTS_H
+#define APP_MEASUREMENTS_H
 #include <vector>
 
 using namespace std;
@@ -17,7 +17,7 @@ private:
 
 public:
     //constructor declaration
-    Measurements(int numCells, int numTemps){}
+    Measurements(int numCells, int numTemps);
 
     //functions to simulate the data reading
     MeasurementStatus readCellVoltages(void);

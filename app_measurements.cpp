@@ -2,6 +2,9 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdexcept>
+#include <iostream>
+
+using namespace std;
 
 //constructor definition
 Measurements::Measurements(int numCells, int numTemps):
@@ -9,7 +12,8 @@ meas_cellVoltages_V(numCells, 0.0),
 meas_cellTemps_C(numTemps, 0.0),
 meas_current_mA(0.0)
 {
-    srand(time(nullptr)); //initilising the random seed
+    cout << "Initializing with numCells: " << numCells << ", numTemps: " << numTemps << endl;
+    srand(static_cast<unsigned int>(time(nullptr))); //initilising the random seed
 }
 
 
@@ -18,6 +22,7 @@ MeasurementStatus Measurements::readCellVoltages(void){
     for(int i = 0 ; i< meas_cellVoltages_V.size(); i++){
         meas_cellVoltages_V[i] = 3.0f + static_cast<float>(rand())/(static_cast<float>(RAND_MAX/(1.2f)));
     }
+    cout<<"cell voltages initialized"<<endl;
     return MeasurementStatus::SUCCESS;
 }
 
@@ -26,12 +31,14 @@ MeasurementStatus Measurements::readCellTemps(void){
     for(int i = 0 ; i < meas_cellTemps_C.size(); i++){
         meas_cellTemps_C[i] = 20.0f+static_cast<float>(rand())/(static_cast<float>(RAND_MAX/(20.0f)));
     }
+    cout<<"cell temps initialized"<<endl;
     return MeasurementStatus::SUCCESS;
 }
 
 //function to read current in mA
 MeasurementStatus Measurements::readCellCurrent(void){
     meas_current_mA = static_cast<float>(rand())/(static_cast<float>(RAND_MAX/(10000.0f)));
+    cout<<"current initialized"<<endl;
     return MeasurementStatus::SUCCESS;
 }
 

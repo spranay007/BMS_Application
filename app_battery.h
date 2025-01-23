@@ -1,7 +1,9 @@
-#ifndef APP_BATTERY.H
-#define APP_BATTERY.H
+#ifndef APP_BATTERY_H
+#define APP_BATTERY_H
 
 #include <vector>
+#include "app_measurements.h"
+
 using namespace std;
 
 enum class BatteryType{
@@ -11,31 +13,30 @@ enum class BatteryType{
     LITHIUM_POLYMER = 3
 };
 
-class battery{
+class Battery{
     private:
-        vector<float> meas_cellVoltages;
-        vector<float> meas_cellTemps;
-        float meas_current;
+        Measurements batteryMeasurements;
         BatteryType batteryType;
     public:
-        battery(int numcells, int numTempSensors, BatteryType type); 
+        Battery(int numcells, int numTempSensors, BatteryType type); 
 
         //setter functions
-        void setCellVoltages(const vector<float>& cellVolatges);
-        void setCellTemps(const vector<float>& cellTemps);
-        void setCurrent(float current);
+        // void setCellVoltages(const vector<float>& cellVolatges);
+        // void setCellTemps(const vector<float>& cellTemps);
+        // void setCurrent(float current);
         void setBatteryType(BatteryType type);
 
         //getter functions
-        vector<float> getCellVoltages(void) const;
-        vector<float> getCellTemps(void) const;
+        const vector<float> getCellVoltages(void) const;
+        const vector<float> getCellTemps(void) const;
         float getCurrent(void) const;
         BatteryType getBatteryType(void) const;
 
         //utility functions
-        size_t getCellCount(void) const;
-        size_t getCellTempCount(void) const;
+        // size_t getCellCount(void) const;
+        // size_t getCellTempCount(void) const;
         bool checkBatteryTypeValidity(BatteryType type);
+        void readBatteryData();
 };
 
 #endif
